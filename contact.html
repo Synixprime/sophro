@@ -773,7 +773,7 @@
         };
 
         // Initialisation d'EmailJS
-        if (EMAILJS_CONFIG.PUBLIC_KEY !== '9QExCaGSrHj7QEbMW') {
+        if (EMAILJS_CONFIG.PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
             emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
         }
 
@@ -786,7 +786,7 @@
             const statusMessage = document.getElementById('statusMessage');
             
             // Vérifier si EmailJS est configuré
-            if (EMAILJS_CONFIG.PUBLIC_KEY === '9QExCaGSrHj7QEbMW') {
+            if (EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
                 statusMessage.className = 'status-message error';
                 statusMessage.textContent = '⚠️ EmailJS n\'est pas encore configuré. Configurez vos clés dans le JavaScript.';
                 statusMessage.style.display = 'block';
@@ -1072,3 +1072,4 @@
 </body>
 
 </html>
+
