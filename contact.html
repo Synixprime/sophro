@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Célia Fernandes Sophrologue Bayonne</title>
+    <link rel="icon" type="image/png" href="favicon.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            overflow-x: hidden;
+            background: #fafafa;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(141, 178, 154, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #8db29a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #8db29a;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #8db29a, #a8d5ba);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #8db29a;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 50vh;
+            background: linear-gradient(135deg, rgba(141, 178, 154, 0.9), rgba(168, 213, 186, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300"><path d="M0,150 C300,100 600,200 1200,120 L1200,300 L0,300 Z" fill="rgba(255,255,255,0.1)"/><circle cx="200" cy="80" r="30" fill="rgba(255,255,255,0.08)"/><circle cx="800" cy="50" r="40" fill="rgba(255,255,255,0.06)"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(141, 178, 154, 0.1), rgba(168, 213, 186, 0.05));
+            border-radius: 20px;
+            border-left: 5px solid #8db29a;
+        }
+
+        .contact-intro h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .contact-intro p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Contact Layout */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .contact-info h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: rgba(248, 249, 250, 0.5);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .contact-item:hover {
+            background: rgba(141, 178, 154, 0.1);
+            border-left-color: #8db29a;
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #8db29a, #a8d5ba);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 1.5rem;
+            box-shadow: 0 5px 15px rgba(141, 178, 154, 0.3);
+        }
+
+        .contact-details h4 {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-details p {
+            color: #666;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .contact-details a {
+            color: #8db29a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: #6fa085;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .contact-form h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            background: #fafafa;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8db29a;
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, #8db29a, #a8d5ba);
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(141, 178, 154, 0.3);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(141, 178, 154, 0.4);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Status Message */
+        .status-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .status-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .status-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #8db29a;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Map Section */
+        .map-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .map-section h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        #map {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .address-highlight {
+            background: linear-gradient(135deg, rgba(141, 178, 154, 0.1), rgba(168, 213, 186, 0.05));
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #8db29a;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        /* Social Media */
+        .social-section {
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .social-section h3 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #2c3e50;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #8db29a, #a8d5ba);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* Configuration Info Box */
+        .config-info {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .config-info h4 {
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+
+        .config-info p {
+            color: #856404;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-link {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 3rem;
+                padding-top: 3rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .contact-intro {
+                padding: 2rem;
+            }
+
+            .contact-info,
+            .contact-form,
+            .map-section {
+                padding: 2rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .contact-icon {
+                margin: 0;
+            }
+
+            #map {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#accueil" class="logo">Célia Fernandes</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="sophrologue.html">Accueil</a></li>
+                <li><a href="a_quoi_attendre.html">À quoi s'attendre</a></li>
+                <li><a href="parcours.html">Mon Parcours</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Contactez-moi</h1>
+            <p class="hero-subtitle">Je suis là pour vous accueillir avec bienveillance</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Contact Intro -->
+        <div class="contact-intro fade-in">
+            <h2>Prendre le premier pas</h2>
+            <p>Si vous sentez que c'est le moment de faire quelque chose pour vous, je suis là. Contactez-moi avec vos mots, votre ressenti. Je répondrai avec douceur et disponibilité. Mon but est que vous vous sentiez accueilli(e), dès ce premier contact.</p>
+        </div>
+
+        <!-- Contact Layout -->
+        <div class="contact-layout">
+            
+            <!-- Contact Info -->
+            <div class="contact-info fade-in">
+                <h3>Mes coordonnées</h3>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h4>Adresse</h4>
+                        <p>81 chemin de Laharie<br>64100 Bayonne</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h4>Téléphone</h4>
+                        <p><a href="tel:0683096107">06 83 09 61 07</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p><a href="mailto:celiafsopro64@gmail.com">celiafsopro64@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🏠</div>
+                    <div class="contact-details">
+                        <h4>Consultations</h4>
+                        <p>En cabinet ou à domicile<br>Sur rendez-vous uniquement</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <div class="contact-details">
+                        <h4>Horaires</h4>
+                        <p>Lundi - Vendredi : 9h - 19h<br>Samedi : 9h - 17h</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form fade-in">
+                
+                <h3>Écrivez-moi</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nom et Prénom</label>
+                        <input type="text" id="name" name="from_name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="from_email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Téléphone (optionnel)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" placeholder="Ex: Demande de rendez-vous, Question sur la sophrologie...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required placeholder="Parlez-moi de ce qui vous amène, avec vos mots, votre ressenti..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button" id="submitBtn">
+                        Envoyer mon message
+                    </button>
+
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>Envoi en cours...</p>
+                    </div>
+
+                    <div class="status-message" id="statusMessage"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section fade-in">
+            
+            <h3>Comment me trouver</h3>
+            <div id="map"></div>
+            <div class="address-highlight">
+                <strong>81 chemin de Laharie, 64100 Bayonne</strong><br>
+                Cabinet facilement accessible, parking disponible
+            </div>
+        </div>
+
+        <!-- Social Media -->
+        <div class="social-section fade-in">
+            <h3>Suivez-moi sur les réseaux</h3>
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <div class="social-icon">📘</div>
+                    <span>Célia Fernandes Sophrologue</span>
+                </a>
+                <a href="#" class="social-link">
+                    <div class="social-icon">📷</div>
+                    <span>@celiasophro</span>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer style="background: #2c3e50; padding: 3rem 2rem 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+            <div>
+                <h3 style="color: #8db29a; margin-bottom: 1rem; font-size: 1.2rem;">Célia Fernandes</h3>
+                <p style="opacity: 0.9; line-height: 1.6; color: white;">Sophrologue spécialisée en confiance et estime de soi à Bayonne</p>
+            </div>
+            <div>
+                <h3 style="color: #8db29a; margin-bottom: 1rem; font-size: 1.2rem;">Contact</h3>
+                <p style="opacity: 0.9; margin-bottom: 0.5rem; color: white;">📞 06 83 09 61 07 </p>
+                <p style="opacity: 0.9; margin-bottom: 0.5rem; color: white;">✉️ celiafsopro64@gmail.com</p>
+                <p style="opacity: 0.9; margin-bottom: 0.5rem; color: white;">📍 Bayonne & domicile</p>
+            </div>
+            <div>
+                <h3 style="color: #8db29a; margin-bottom: 1rem; font-size: 1.2rem;">Horaires</h3>
+                <p style="opacity: 0.9; margin-bottom: 0.5rem; color: white;">Lundi - Vendredi : 9h - 19h</p>
+                <p style="opacity: 0.9; margin-bottom: 0.5rem; color: white;">Samedi : 9h - 17h</p>
+                <p style="opacity: 0.9; color: white;">Sur rendez-vous uniquement</p>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; text-align: center;">
+            <p style="color: white;">&copy; 2025 Célia Fernandes - Sophrologue à Bayonne. Tous droits réservés.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8; color: white;">Confiance • Estime de soi • Bienveillance</p>
+            <p style="margin-top: 1rem; opacity: 0.6; font-size: 0.9rem; color: white;">Site développé par Buisson Léni</p>
+        </div>
+    </footer>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgzGi3w-gY9c3SVI6q8yCTe631KDfxr2k&callback=initMap"></script>
+
+    <script>
+        // ==================== CONFIGURATION EMAILJS ====================
+        // À REMPLACER PAR VOS VRAIES CLÉS EMAILJS
+        const EMAILJS_CONFIG = {
+            SERVICE_ID: 'service_k095jrh',        // Ex: 'service_abc123'
+            TEMPLATE_ID: 'template_30a49kd',      // Ex: 'template_xyz789' 
+            PUBLIC_KEY: '9QExCaGSrHj7QEbMW'         // Ex: 'user_123abc789'
+        };
+
+        // Initialisation d'EmailJS
+        if (EMAILJS_CONFIG.PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+            emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+        }
+
+        // ==================== GESTION DU FORMULAIRE ====================
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            const statusMessage = document.getElementById('statusMessage');
+            
+            // Vérifier si EmailJS est configuré
+            if (EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+                statusMessage.className = 'status-message error';
+                statusMessage.textContent = '⚠️ EmailJS n\'est pas encore configuré. Configurez vos clés dans le JavaScript.';
+                statusMessage.style.display = 'block';
+                return;
+            }
+            
+            // Affichage du loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Envoi en cours...';
+            loading.style.display = 'block';
+            statusMessage.style.display = 'none';
+            
+            try {
+                // Envoi avec EmailJS
+                const result = await emailjs.sendForm(
+                    EMAILJS_CONFIG.SERVICE_ID,
+                    EMAILJS_CONFIG.TEMPLATE_ID,
+                    this
+                );
+                
+                console.log('SUCCESS!', result.status, result.text);
+                
+                // Affichage du succès
+                statusMessage.className = 'status-message success';
+                statusMessage.textContent = '✅ Message envoyé avec succès ! Célia vous répondra bientôt.';
+                statusMessage.style.display = 'block';
+                
+                // Reset du formulaire
+                this.reset();
+                
+            } catch (error) {
+                console.error('FAILED...', error);
+                
+                // Affichage de l'erreur
+                statusMessage.className = 'status-message error';
+                statusMessage.textContent = '❌ Erreur lors de l\'envoi. Veuillez réessayer ou contacter directement.';
+                statusMessage.style.display = 'block';
+            } finally {
+                // Masquage du loading
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Envoyer mon message';
+                loading.style.display = 'none';
+            }
+        });
+
+        // ==================== GOOGLE MAPS ====================
+        function initMap() {
+            // Coordonnées pour 81 chemin de Laharie, 64100 Bayonne
+            const cabinetLocation = { lat: 43.4832, lng: -1.4748 };
+            
+            // Options de la carte
+            const mapOptions = {
+                zoom: 16,
+                center: cabinetLocation,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                styles: [
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"weight": "2.00"}]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{"color": "#9c9c9c"}]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text",
+                        "stylers": [{"visibility": "on"}]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [{"color": "#f2f2f2"}]
+                    },
+                    {
+                        "featureType": "landscape.man_made",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"color": "#ffffff"}]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [{"visibility": "off"}]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [{"saturation": -100}, {"lightness": 45}]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "all",
+                        "stylers": [{"visibility": "simplified"}]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.icon",
+                        "stylers": [{"visibility": "off"}]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "all",
+                        "stylers": [{"visibility": "off"}]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [{"color": "#8db29a"}, {"visibility": "on"}]
+                    }
+                ]
+            };
+            
+            // Créer la carte
+            const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            
+            // Créer le marqueur personnalisé
+            const marker = new google.maps.Marker({
+                position: cabinetLocation,
+                map: map,
+                title: 'Cabinet de Célia Fernandes - Sophrologue',
+                animation: google.maps.Animation.DROP
+            });
+            
+            // InfoWindow avec les informations du cabinet
+            const infoWindow = new google.maps.InfoWindow({
+                content: `
+                    <div style="padding: 10px; font-family: Georgia, serif;">
+                        <h3 style="color: #8db29a; margin: 0 0 10px 0; font-size: 1.2rem;">
+                            Célia Fernandes - Sophrologue
+                        </h3>
+                        <p style="margin: 5px 0; color: #2c3e50;">
+                            <strong>📍 Adresse:</strong><br>
+                            81 chemin de Laharie<br>
+                            64100 Bayonne
+                        </p>
+                        <p style="margin: 5px 0; color: #2c3e50;">
+                            <strong>📞 Téléphone:</strong><br>
+                            <a href="tel:0683096107" style="color: #8db29a; text-decoration: none;">
+                                06 83 09 61 07
+                            </a>
+                        </p>
+                        <p style="margin: 5px 0; color: #2c3e50;">
+                            <strong>⏰ Horaires:</strong><br>
+                            Lun-Ven: 9h-19h | Sam: 9h-17h
+                        </p>
+                        <p style="margin: 10px 0 0 0; font-style: italic; color: #666;">
+                            Sur rendez-vous uniquement
+                        </p>
+                    </div>
+                `
+            });
+            
+            // Ouvrir l'InfoWindow au clic sur le marqueur
+            marker.addListener('click', function() {
+                infoWindow.open(map, marker);
+            });
+            
+            // Ouvrir l'InfoWindow automatiquement après 2 secondes
+            setTimeout(() => {
+                infoWindow.open(map, marker);
+            }, 2000);
+        }
+
+        // Fonction d'erreur si Google Maps ne peut pas se charger
+        window.gm_authFailure = function() {
+            document.getElementById('map').innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%; 
+                            background: #f8f9fa; border-radius: 15px; color: #8db29a; font-size: 1.1rem;
+                            border: 2px solid #8db29a; flex-direction: column; text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🗺️</div>
+                    <div style="margin-bottom: 1rem; font-weight: 600;">Configuration Google Maps requise</div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;">
+                        Remplacez YOUR_GOOGLE_MAPS_API_KEY par votre vraie clé API
+                    </div>
+                </div>
+            `;
+        };
+
+        // ==================== NAVIGATION MOBILE ====================
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Fermer le menu mobile au clic sur un lien
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ==================== ANIMATIONS ====================
+        // Smooth scrolling pour les liens anchor
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background au scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer pour les animations fade-in
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Appliquer les animations fade-in
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Animation du hamburger
+        hamburger.addEventListener('click', () => {
+            const spans = hamburger.querySelectorAll('span');
+            
+            if (hamburger.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'rotate(0) translate(0, 0)';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'rotate(0) translate(0, 0)';
+            }
+        });
+
+        // ==================== FALLBACK SI GOOGLE MAPS NE SE CHARGE PAS ====================
+        // Si Google Maps ne se charge pas après 5 secondes, afficher un fallback
+        setTimeout(() => {
+            const map = document.getElementById('map');
+            if (map && !map.hasChildNodes()) {
+                map.innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; 
+                                background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 15px; 
+                                color: #8db29a; font-size: 1.1rem; border: 2px solid #8db29a; 
+                                flex-direction: column; text-align: center; padding: 2rem;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📍</div>
+                        <div style="margin-bottom: 1rem; font-weight: 600;">Cabinet de Célia Fernandes</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">
+                            81 chemin de Laharie, 64100 Bayonne<br>
+                            <a href="https://maps.google.com/?q=81+chemin+de+Laharie+64100+Bayonne" 
+                               target="_blank" 
+                               style="color: #8db29a; text-decoration: underline; margin-top: 10px; display: inline-block;">
+                                📱 Ouvrir dans Google Maps
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
