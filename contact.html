@@ -773,7 +773,7 @@
         };
 
         // Initialisation d'EmailJS
-        if (EMAILJS_CONFIG.PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+        if (EMAILJS_CONFIG.PUBLIC_KEY !== '9QExCaGSrHj7QEbMW') {
             emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
         }
 
@@ -786,7 +786,7 @@
             const statusMessage = document.getElementById('statusMessage');
             
             // Vérifier si EmailJS est configuré
-            if (EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+            if (EMAILJS_CONFIG.PUBLIC_KEY === '9QExCaGSrHj7QEbMW') {
                 statusMessage.className = 'status-message error';
                 statusMessage.textContent = '⚠️ EmailJS n\'est pas encore configuré. Configurez vos clés dans le JavaScript.';
                 statusMessage.style.display = 'block';
@@ -958,10 +958,9 @@
                 <div style="display: flex; align-items: center; justify-content: center; height: 100%; 
                             background: #f8f9fa; border-radius: 15px; color: #8db29a; font-size: 1.1rem;
                             border: 2px solid #8db29a; flex-direction: column; text-align: center; padding: 2rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🗺️</div>
-                    <div style="margin-bottom: 1rem; font-weight: 600;">Configuration Google Maps requise</div>
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">Localisation Maps</div>
                     <div style="font-size: 0.9rem; opacity: 0.8;">
-                        Remplacez YOUR_GOOGLE_MAPS_API_KEY par votre vraie clé API
+                        En cours de travail ...
                     </div>
                 </div>
             `;
@@ -1071,4 +1070,5 @@
         }, 5000);
     </script>
 </body>
+
 </html>
