@@ -764,34 +764,23 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgzGi3w-gY9c3SVI6q8yCTe631KDfxr2k&callback=initMap"></script>
 
     <script>
-        // ==================== CONFIGURATION EMAILJS ====================
-        // À REMPLACER PAR VOS VRAIES CLÉS EMAILJS
+// ==================== CONFIGURATION EMAILJS ====================
         const EMAILJS_CONFIG = {
-            SERVICE_ID: 'service_k095jrh',        // Ex: 'service_abc123'
-            TEMPLATE_ID: 'template_30a49kd',      // Ex: 'template_xyz789' 
-            PUBLIC_KEY: '9QExCaGSrHj7QEbMW'         // Ex: 'user_123abc789'
+            SERVICE_ID: 'service_k095jrh',
+            TEMPLATE_ID: 'template_30a49kd',
+            PUBLIC_KEY: '9QExCaGSrHj7QEbMW'
         };
 
         // Initialisation d'EmailJS
-        if (EMAILJS_CONFIG.PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
-            emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-        }
+        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
 
         // ==================== GESTION DU FORMULAIRE ====================
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const submitBtn = document.getElementById('submitBtn');
             const loading = document.getElementById('loading');
             const statusMessage = document.getElementById('statusMessage');
-            
-            // Vérifier si EmailJS est configuré
-            if (EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-                statusMessage.className = 'status-message error';
-                statusMessage.textContent = '⚠️ EmailJS n\'est pas encore configuré. Configurez vos clés dans le JavaScript.';
-                statusMessage.style.display = 'block';
-                return;
-            }
             
             // Affichage du loading
             submitBtn.disabled = true;
@@ -799,37 +788,49 @@
             loading.style.display = 'block';
             statusMessage.style.display = 'none';
             
-            try {
-                // Envoi avec EmailJS
-                const result = await emailjs.sendForm(
-                    EMAILJS_CONFIG.SERVICE_ID,
-                    EMAILJS_CONFIG.TEMPLATE_ID,
-                    this
-                );
-                
-                console.log('SUCCESS!', result.status, result.text);
+            // Récupérer les données du formulaire
+            const formData = new FormData(this);
+            const templateParams = {
+                from_name: formData.get('from_name'),
+                from_email: formData.get('from_email'),
+                phone: formData.get('phone') || 'Non renseigné',
+                subject: formData.get('subject'),
+                message: formData.get('message')
+            };
+            
+            console.log('Envoi avec les paramètres:', templateParams);
+            
+            // Envoi avec EmailJS
+            emailjs.send(
+                EMAILJS_CONFIG.SERVICE_ID,
+                EMAILJS_CONFIG.TEMPLATE_ID,
+                templateParams,
+                EMAILJS_CONFIG.PUBLIC_KEY
+            ).then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
                 
                 // Affichage du succès
                 statusMessage.className = 'status-message success';
-                statusMessage.textContent = '✅ Message envoyé avec succès ! Célia vous répondra bientôt.';
+                statusMessage.textContent = 'Message envoyé avec succès ! Célia vous répondra bientôt.';
                 statusMessage.style.display = 'block';
                 
                 // Reset du formulaire
-                this.reset();
+                document.getElementById('contactForm').reset();
                 
-            } catch (error) {
+            }).catch(function(error) {
                 console.error('FAILED...', error);
                 
-                // Affichage de l'erreur
+                // Affichage de l'erreur détaillée
                 statusMessage.className = 'status-message error';
-                statusMessage.textContent = '❌ Erreur lors de l\'envoi. Veuillez réessayer ou contacter directement.';
+                statusMessage.textContent = 'Erreur lors de l\'envoi: ' + (error.text || error.message || 'Erreur inconnue');
                 statusMessage.style.display = 'block';
-            } finally {
+                
+            }).finally(function() {
                 // Masquage du loading
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Envoyer mon message';
                 loading.style.display = 'none';
-            }
+            });
         });
 
         // ==================== GOOGLE MAPS ====================
@@ -1072,5 +1073,6 @@
 </body>
 
 </html>
+
 
 
