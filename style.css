@@ -1,4 +1,4 @@
-        * {
+* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -22,7 +22,7 @@
             z-index: 1000;
             padding: 1rem 2rem;
             transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(141, 178, 154, 0.2);
+            border-bottom: 1px solid rgba(186, 156, 220, 0.2);
         }
 
         .nav-container {
@@ -36,7 +36,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 600;
-            color: #8db29a;
+            color: #b89cd6;
             text-decoration: none;
         }
 
@@ -55,7 +55,7 @@
         }
 
         .nav-links a:hover {
-            color: #8db29a;
+            color: #b89cd6;
         }
 
         .nav-links a::after {
@@ -65,7 +65,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(135deg, #8db29a, #a8d5ba);
+            background: linear-gradient(135deg, #b89cd6, #d4c5e8);
             transition: width 0.3s ease;
         }
 
@@ -83,7 +83,7 @@
         .hamburger span {
             width: 25px;
             height: 3px;
-            background: #8db29a;
+            background: #b89cd6;
             border-radius: 3px;
             transition: all 0.3s ease;
         }
@@ -103,7 +103,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(141, 178, 154, 0.9), rgba(168, 213, 186, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.1"/></svg>');
+            background: linear-gradient(135deg, #b89cd6, #c9b3e0), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.1"/></svg>');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -143,19 +143,19 @@
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, #6e8a78, #94b9a3);
+            background: linear-gradient(135deg, #a488c4, #b89cd6);
             color: white;
             padding: 1.2rem 2.5rem;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(141, 178, 154, 0.3);
+            box-shadow: 0 8px 25px rgba(184, 156, 214, 0.3);
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(141, 178, 154, 0.4);
+            box-shadow: 0 12px 35px rgba(184, 156, 214, 0.4);
         }
 
         /* Sections */
@@ -181,7 +181,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background: linear-gradient(135deg, #8db29a, #a8d5ba);
+            background: linear-gradient(135deg, #b89cd6, #d4c5e8);
             border-radius: 2px;
         }
 
@@ -214,7 +214,7 @@
             justify-content: center;
             margin: 0 auto;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border: 3px solid #8db29a;
+            border: 3px solid #b89cd6;
         }
 
         /* Services */
@@ -231,7 +231,7 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid #8db29a;
+            border-top: 4px solid #b89cd6;
         }
 
         .service-card:hover {
@@ -242,7 +242,7 @@
         .service-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #8db29a, #a8d5ba);
+            background: linear-gradient(135deg, #b89cd6, #d4c5e8);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -292,7 +292,7 @@
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #8db29a, #a8d5ba);
+            background: linear-gradient(135deg, #b89cd6, #d4c5e8);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -312,7 +312,7 @@
         footer h3 {
             font-size: 1.2rem;
             margin-bottom: 1rem;
-            color: #8db29a;
+            color: #b89cd6;
         }
 
         /* Mobile footer */
@@ -395,26 +395,26 @@
 
 
         .logo {
-    display: flex;
-    align-items: center;
-}
+            display: flex;
+            align-items: center;
+        }
 
-.logo-image {
-    width: 90px;
-    height: 90px;
-    margin-bottom: -10px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
+        .logo-image {
+            width: 180px;
+            height: 90px;
+            margin-bottom: -10px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
 
-.logo-image:hover {
-    transform: scale(1.1);
-}
+        .logo-image:hover {
+            transform: scale(1.1);
+        }
 
-/* Ajustement mobile */
-@media (max-width: 768px) {
-    .logo-image {
-        width: 80px;
-        height: 80px;
-    }
-}
+        /* Ajustement mobile */
+        @media (max-width: 768px) {
+            .logo-image {
+                width: 80px;
+                height: 80px;
+            }
+        }
