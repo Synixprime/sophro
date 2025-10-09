@@ -415,10 +415,11 @@
         /* Ajustement mobile */
         @media (max-width: 768px) {
             .logo-image {
-                width: 110px;
+                width: 140px;
                 height: 80px;
             }
         }
+
 
 
 
