@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Offres - Célia Fernandes Sophrologue Bayonne</title>
+    <link rel="icon" type="image/png" href="favicon.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            overflow-x: hidden;
+            background: #fafafa;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(186, 156, 220, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            width: 180px;
+            height: 90px;
+            margin-bottom: -10px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #b89cd6;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #b89cd6, #d4c5e8);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #b89cd6;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(184, 156, 214, 0.9), rgba(212, 197, 232, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><circle cx="100" cy="100" r="50" fill="rgba(255,255,255,0.1)"/><circle cx="400" cy="200" r="80" fill="rgba(255,255,255,0.05)"/><circle cx="800" cy="150" r="60" fill="rgba(255,255,255,0.08)"/><circle cx="1000" cy="250" r="40" fill="rgba(255,255,255,0.06)"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 80px;
+            padding: 2rem 1rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            font-weight: 400;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            opacity: 0.95;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(184, 156, 214, 0.1), rgba(212, 197, 232, 0.05));
+            border-radius: 20px;
+            border-left: 5px solid #b89cd6;
+        }
+
+        .intro h2 {
+            color: #2c3e50;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .intro p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Offer Section */
+        .offer-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .offer-item {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .offer-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-left-color: #b89cd6;
+        }
+
+        .offer-item.active {
+            border-left-color: #b89cd6;
+        }
+
+        .offer-header-click {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            transition: background-color 0.3s ease;
+            gap: 1rem;
+        }
+
+        .offer-header-click:hover {
+            background: rgba(184, 156, 214, 0.05);
+        }
+
+        .offer-header-click h3 {
+            color: #2c3e50;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 600;
+            margin: 0;
+            flex: 1;
+            line-height: 1.4;
+        }
+
+        .offer-icon {
+            width: 30px;
+            height: 30px;
+            min-width: 30px;
+            background: linear-gradient(135deg, #b89cd6, #d4c5e8);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .offer-item.active .offer-icon {
+            transform: rotate(45deg);
+        }
+
+        .offer-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            background: rgba(248, 249, 250, 0.5);
+        }
+
+        .offer-item.active .offer-content {
+            max-height: 5000px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .offer-content-inner {
+            color: #555;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            line-height: 1.8;
+        }
+
+        .offer-content-inner p {
+            margin-bottom: 1.5rem;
+        }
+
+        .offer-content-inner ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .offer-content-inner li {
+            margin-bottom: 0.8rem;
+        }
+
+        .section-subtitle {
+            color: #b89cd6;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, rgba(184, 156, 214, 0.2), rgba(212, 197, 232, 0.1));
+            padding: 1.2rem;
+            border-radius: 10px;
+            border-left: 3px solid #b89cd6;
+            font-style: italic;
+            margin: 1.5rem 0;
+        }
+
+        .price-box {
+            background: linear-gradient(135deg, #b89cd6, #d4c5e8);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .price-box .price {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-box .price-detail {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            opacity: 0.95;
+        }
+
+        .testimonial {
+            background: #f0f5f0;
+            padding: 1.2rem;
+            border-left: 3px solid #5a7d5f;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #666;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box {
+            background: #f9f5f0;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .info-box strong {
+            color: #b89cd6;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: block;
+            overflow-x: auto;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(184, 156, 214, 0.2);
+            min-width: 120px;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, rgba(184, 156, 214, 0.2), rgba(212, 197, 232, 0.1));
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .comparison-table td {
+            color: #555;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 4rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .cta-section h2 {
+            color: #2c3e50;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 2rem;
+        }
+
+        .cta-section p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #b89cd6, #d4c5e8);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(184, 156, 214, 0.3);
+            margin: 0.5rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(184, 156, 214, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            padding: 3rem 1.5rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-grid h3 {
+            color: #b89cd6;
+            margin-bottom: 1rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+        }
+
+        .footer-grid p {
+            opacity: 0.9;
+            line-height: 1.6;
+            color: white;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: white;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            margin-top: 0.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Tablet Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .main-content {
+                padding: 3rem 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo-image {
+                width: 140px;
+                height: 70px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 2rem;
+                padding-top: 3rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                min-height: 50vh;
+                margin-top: 70px;
+                padding: 1.5rem 1rem;
+            }
+
+            .hero-content {
+                padding: 1rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .intro {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .offer-header-click {
+                padding: 1.25rem;
+            }
+
+            .offer-item.active .offer-content {
+                padding: 0 1.25rem 1.25rem;
+            }
+
+            .offer-content-inner ul {
+                padding-left: 1.2rem;
+            }
+
+            .cta-section {
+                padding: 2rem 1rem;
+                margin: 2rem 0;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 0.75rem auto;
+                max-width: 90%;
+            }
+
+            .comparison-table {
+                font-size: 0.85rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.75rem 0.5rem;
+                min-width: 100px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                padding: 2rem 1rem 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .logo-image {
+                width: 120px;
+                height: 60px;
+            }
+
+            .hero {
+                min-height: 40vh;
+            }
+
+            .offer-header-click {
+                padding: 1rem;
+            }
+
+            .offer-icon {
+                width: 26px;
+                height: 26px;
+                min-width: 26px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.6rem 0.4rem;
+                min-width: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="sophrologue.html" class="logo">
+                <img src="favicon.jpg" alt="Célia Fernandes Sophrologue" class="logo-image">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="sophrologue.html">Accueil</a></li>
+                <li><a href="a_quoi_attendre.html">À quoi s'attendre</a></li>
+                <li><a href="parcours.html">Mon Parcours</a></li>
+                <li><a href="mes_offres.html">Mes Offres</a></li>
+                <li><a href="events.html">Vos Questions</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span> 
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🌿 Mes Offres de Sophrologie</h1>
+            <p class="hero-subtitle">Retrouvez votre lumière intérieure grâce à des accompagnements bienveillants et personnalisés</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Introduction -->
+        <div class="intro fade-in">
+            <h2>Une invitation à vous retrouver</h2>
+            <p>Vous traversez une période difficile — burn-out, rupture, fatigue émotionnelle — et vous avez le sentiment d'avoir perdu votre énergie, votre confiance ou votre joie de vivre ?</p>
+            <p>Je vous accompagne, avec bienveillance et méthode, à retrouver votre équilibre intérieur, à apaiser vos émotions et à renaître à vous-même grâce à la sophrologie.</p>
+        </div>
+
+        <!-- Offres Container -->
+        <div class="offer-container">
+
+            <!-- PREMIÈRE LUMIÈRE -->
+            <div class="offer-item fade-in">
+                <div class="offer-header-click" onclick="toggleOffer(this)">
+                    <h3>🌞 Première Lumière — Séance découverte unique</h3>
+                    <div class="offer-icon">+</div>
+                </div>
+                <div class="offer-content">
+                    <div class="offer-content-inner">
+                        <p>Avant d'entreprendre un accompagnement, offrez-vous une parenthèse de douceur, une rencontre avec vous-même.</p>
+                        
+                        <h4 class="section-subtitle">🌿 Qu'est-ce que "Première Lumière" ?</h4>
+                        <p>C'est une séance unique, individuelle et personnalisée — une première expérience de sophrologie, conçue comme un moment d'apaisement et de reconnexion à soi.</p>
+                        <p>Elle vous permet de découvrir la méthode, de ressentir ses bienfaits dès la première fois, et de repartir avec des outils concrets pour votre quotidien.</p>
+
+                        <h4 class="section-subtitle">🌸 Trois intentions au choix</h4>
+                        <p>Choisissez le thème qui résonne le plus avec votre besoin du moment :</p>
+                        <ul>
+                            <li><strong>🌸 Détente profonde</strong> — Apaiser le corps et relâcher les tensions accumulées.</li>
+                            <li><strong>🌬️ Chasser le stress</strong> — Calmer le mental, retrouver un souffle apaisé et un esprit plus clair.</li>
+                            <li><strong>🍃 Lâcher-prise</strong> — Alléger les pensées envahissantes et retrouver une sensation d'équilibre intérieur.</li>
+                        </ul>
+
+                        <h4 class="section-subtitle">💫 Déroulement de la séance</h4>
+                        <div class="info-grid">
+                            <div class="info-box">
+                                <strong>🕰️ Durée</strong>
+                                1h15
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Temps d'écoute bienveillant pour comprendre vos besoins du moment.</li>
+                            <li>Séance complète de relaxation dynamique (mouvements doux et respiration consciente).</li>
+                            <li>Sophronisation guidée adaptée à votre intention, pour réactiver vos ressources positives.</li>
+                        </ul>
+
+                        <h4 class="section-subtitle">💌 Après la séance</h4>
+                        <ul>
+                            <li>L'enregistrement audio de votre sophronisation, pour prolonger la détente chez vous.</li>
+                            <li>Une fiche technique avec les relaxations dynamiques et des conseils personnalisés.</li>
+                            <li>🎁 Un cadeau surprise, pour continuer à cultiver la sérénité au quotidien.</li>
+                        </ul>
+
+                        <h4 class="section-subtitle">📞 Suivi personnalisé inclus</h4>
+                        <p>Une semaine après la séance, un court appel (15 à 30 min) vous permet de :</p>
+                        <ul>
+                            <li>partager vos ressentis,</li>
+                            <li>poser vos questions,</li>
+                            <li>recevoir mes conseils pour poursuivre votre pratique.</li>
+                        </ul>
+
+                        <div class="price-box">
+                            <div class="price">60 €</div>
+                            <div class="price-detail">Paiement en direct ou par virement • Sur rendez-vous uniquement</div>
+                        </div>
+
+                        <div class="testimonial">
+                            "Dès la première séance, j'ai ressenti un vrai apaisement intérieur et une sensation de légèreté que je n'avais pas connue depuis longtemps." — Avis client (Google)
+                        </div>
+
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <a href="contact.html" class="cta-button">Réserver ma séance "Première Lumière"</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RETROUVER SON SOUFFLE -->
+            <div class="offer-item fade-in">
+                <div class="offer-header-click" onclick="toggleOffer(this)">
+                    <h3>🌸 Retrouver Son Souffle — 6 semaines</h3>
+                    <div class="offer-icon">+</div>
+                </div>
+                <div class="offer-content">
+                    <div class="offer-content-inner">
+                        <p class="highlight">Le parcours pour apaiser votre mental et retrouver votre énergie.</p>
+
+                        <h4 class="section-subtitle">🌿 Idéal pour :</h4>
+                        <p>Les personnes fatiguées, stressées, épuisées mentalement, qui veulent reprendre le contrôle de leurs émotions et souffler à nouveau.</p>
+
+                        <h4 class="section-subtitle">🎯 Objectif :</h4>
+                        <p>Apaiser le mental, lâcher prise et réinstaller le calme intérieur en quelques semaines.</p>
+
+                        <h4 class="section-subtitle">🧘‍♀️ Contenu :</h4>
+                        <ul>
+                            <li>Séance "0" découverte & détente (1h30 à 2h)</li>
+                            <li>4 séances d'accompagnement (1h chacune)</li>
+                            <li>1 séance de clôture (1h)</li>
+                            <li>Audios et fiches pratiques inclus</li>
+                            <li>« Parchemin sacré », suivi de votre chemin</li>
+                        </ul>
+
+                        <h4 class="section-subtitle">🌼 Résultats :</h4>
+                        <ul>
+                            <li>Diminution du stress et des tensions</li>
+                            <li>Sommeil plus réparateur</li>
+                            <li>Esprit clair et respiration fluide</li>
+                            <li>Sensation d'ancrage et d'énergie sereine retrouvée</li>
+                        </ul>
+
+                        <div class="info-grid">
+                            <div class="info-box">
+                                <strong>💰 Tarif</strong>
+                                490 €
+                            </div>
+                            <div class="info-box">
+                                <strong>📅 Durée</strong>
+                                6 semaines
+                            </div>
+                            <div class="info-box">
+                                <strong>📍 Lieu</strong>
+                                Bayonne ou visio
+                            </div>
+                        </div>
+
+                        <p style="text-align: center; color: #888; font-style: italic; margin-top: 1rem;">Possibilité de paiement en 1 ou 2 fois sans frais</p>
+
+                        <div class="testimonial">
+                            "Chaque séance est un vrai moment de recentrage et de sérénité." — Témoignage client (avis Google)
+                        </div>
+
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <a href="contact.html" class="cta-button">Commencer ce parcours</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RENAÎTRE EN DOUCEUR -->
+            <div class="offer-item fade-in">
+                <div class="offer-header-click" onclick="toggleOffer(this)">
+                    <h3>🌿 Renaître en Douceur — 8 à 9 semaines</h3>
+                    <div class="offer-icon">+</div>
+                </div>
+                <div class="offer-content">
+                    <div class="offer-content-inner">
+                        <p class="highlight">Le parcours pour restaurer la confiance et l'estime de soi.</p>
+
+                        <h4 class="section-subtitle">🌸 Idéal pour :</h4>
+                        <p>Les personnes en reconstruction (après burn-out, rupture ou perte de repères), qui souhaitent retrouver leur estime et se reconnecter à elles-mêmes.</p>
+
+                        <h4 class="section-subtitle">🎯 Objectif :</h4>
+                        <p>Apprendre à vous aimer à nouveau, à vous respecter, à oser être vous-même, et à retrouver la sérénité intérieure.</p>
+
+                        <h4 class="section-subtitle">🧘‍♀️ Contenu :</h4>
+                        <ul>
+                            <li>Séance "0" exploration & détente (1h30 à 2h)</li>
+                            <li>5 séances d'accompagnement (1h chacune)</li>
+                            <li>1 séance de clôture (1h30)</li>
+                            <li>Audios de relaxation + fiches techniques</li>
+                            <li>« Parchemin sacré », suivi de votre chemin</li>
+                        </ul>
+
+                        <h4 class="section-subtitle">🌼 Résultats :</h4>
+                        <ul>
+                            <li>Estime et confiance renforcées</li>
+                            <li>Meilleure gestion des émotions</li>
+                            <li>Apaisement du mental</li>
+                            <li>Sentiment d'équilibre et de légèreté</li>
+                        </ul>
+
+                        <div class="info-grid">
+                            <div class="info-box">
+                                <strong>💰 Tarif</strong>
+                                560 €
+                            </div>
+                            <div class="info-box">
+                                <strong>📅 Durée</strong>
+                                8 à 9 semaines
+                            </div>
+                            <div class="info-box">
+                                <strong>📍 Lieu</strong>
+                                Bayonne ou visio
+                            </div>
+                        </div>
+
+                        <p style="text-align: center; color: #888; font-style: italic; margin-top: 1rem;">Paiement possible en 1, 2 ou 3 fois sans frais</p>
+
+                        <div class="testimonial">
+                            "Grâce à ses techniques de sophrologie, je ressens un véritable mieux-être au quotidien." — Témoignage client (avis Google)
+                        </div>
+
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <a href="contact.html" class="cta-button">Commencer ce parcours</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RAYONNER À NOUVEAU -->
+            <div class="offer-item fade-in">
+                <div class="offer-header-click" onclick="toggleOffer(this)">
+                    <h3>🌺 Rayonner à Nouveau — 3 mois</h3>
+                    <div class="offer-icon">+</div>
+                </div>
+                <div class="offer-content">
+                    <div class="offer-content-inner">
+                        <p class="highlight">Le parcours signature : transformation complète et renaissance intérieure.</p>
+
+                        <h4 class="section-subtitle">🌕 Idéal pour :</h4>
+                        <p>Les personnes qui ont traversé un burnout profond, une épreuve, un épuisement émotionnel/corporel ou une perte de sens, et qui veulent se reconstruire en profondeur.</p>
+
+                        <h4 class="section-subtitle">🎯 Objectif :</h4>
+                        <p>Vous libérer du passé, retrouver votre confiance, votre énergie et votre lumière intérieure durablement. Être épanoui à la vie.</p>
+
+                        <h4 class="section-subtitle">🧘‍♀️ Contenu :</h4>
+                        <ul>
+                            <li>Séance "0" rencontre & détente (1h30 à 2h)</li>
+                            <li>7 séances d'accompagnement (1h chacune)</li>
+                            <li>1 séance de clôture (1h30)</li>
+                            <li>« Parchemin sacré », suivi de votre chemin</li>
+                            <li>Rituel symbolique de clôture (option premium 🌕)</li>
+                        </ul>
+
+                        <h4 class="section-subtitle">🌼 Résultats :</h4>
+                        <ul>
+                            <li>Reconnexion à vous-même, confiance et alignement</li>
+                            <li>Guérison émotionnelle et libération du stress</li>
+                            <li>Joie, énergie et sérénité retrouvées</li>
+                            <li>Rayonnement personnel et clarté de vie</li>
+                        </ul>
+
+                        <div class="info-grid">
+                            <div class="info-box">
+                                <strong>💰 Tarif</strong>
+                                630 €
+                            </div>
+                            <div class="info-box">
+                                <strong>📅 Durée</strong>
+                                3 mois
+                            </div>
+                            <div class="info-box">
+                                <strong>📍 Lieu</strong>
+                                Bayonne ou visio
+                            </div>
+                        </div>
+
+                        <p style="text-align: center; color: #888; font-style: italic; margin-top: 1rem;">Paiement possible en 1, 2 ou 3 fois sans frais</p>
+
+                        <div class="testimonial">
+                            "Une professionnelle douce, compétente et passionnée par son métier !" — Témoignage client (avis Google)
+                        </div>
+
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <a href="contact.html" class="cta-button">Commencer ce parcours</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bonus Section -->
+        <div class="intro fade-in" style="margin-top: 4rem;">
+            <h2>🎁 Bonus communs à tous les parcours</h2>
+            <ul style="text-align: left; max-width: 700px; margin: 2rem auto;">
+                <li style="margin-bottom: 1rem;"><strong>🎧 Audios de relaxation personnalisés</strong> + Fiches techniques d'exercices pour vous aider à prolonger la détente à la maison.</li>
+                <li style="margin-bottom: 1rem;"><strong>📘 « Parchemin sacré »</strong> pour mieux gérer votre rythme d'entraînement, noter vos ressentis et renforcer les effets des séances.</li>
+                <li style="margin-bottom: 1rem;"><strong>💬 Suivi bienveillant</strong> entre les séances (par message ou e-mail) pour vous sentir soutenu(e) tout au long du parcours.</li>
+            </ul>
+        </div>
+
+        <!-- Tableau comparatif -->
+        <div class="fade-in" style="margin-top: 4rem;">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 2rem; font-weight: 400;">💎 Résumé comparatif des offres</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Offre</th>
+                        <th>Objectif</th>
+                        <th>Durée</th>
+                        <th>Contenu</th>
+                        <th>Tarif</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Première Lumière</strong></td>
+                        <td>Découverte & apaisement</td>
+                        <td>1 séance</td>
+                        <td>Séance unique 1h15</td>
+                        <td><strong>60 €</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Retrouver son souffle</strong></td>
+                        <td>Apaisement du stress et vitalité</td>
+                        <td>6 semaines</td>
+                        <td>Séance 0 + 4 + clôture</td>
+                        <td><strong>490 €</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Renaître en douceur</strong></td>
+                        <td>Confiance et estime de soi</td>
+                        <td>8–9 semaines</td>
+                        <td>Séance 0 + 5 + clôture</td>
+                        <td><strong>560 €</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rayonner à nouveau</strong></td>
+                        <td>Transformation complète</td>
+                        <td>3 mois</td>
+                        <td>Séance 0 + 7 + clôture</td>
+                        <td><strong>630 €</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Ma promesse -->
+        <div class="intro fade-in" style="margin-top: 4rem;">
+            <h2>🛡️ Ma promesse</h2>
+            <p>Un accompagnement humain, professionnel et sans jugement. Chaque parcours est conçu pour vous aider à vous retrouver, à votre rythme, avec douceur et profondeur.</p>
+            <p>Vous repartez avec des outils concrets, une meilleure connaissance de vous-même et une énergie nouvelle pour avancer.</p>
+            <div class="highlight">
+                "Vous n'avez pas besoin d'aller vite, vous avez besoin d'aller bien." 💫
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section fade-in">
+            <h2>💜 Prêt(e) à vous retrouver ?</h2>
+            <p style="font-size: 1.1rem; color: #555; margin-bottom: 2rem;">
+                Offrez-vous ce temps pour vous recentrer, respirer et renaître. Chaque séance est une marche vers plus de clarté, de paix et de confiance.
+            </p>
+            <a href="contact.html" class="cta-button">Commencer mon accompagnement</a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>Célia Fernandes</h3>
+                <p>Sophrologue spécialisée en confiance et estime de soi à Bayonne</p>
+            </div>
+            <div>
+                <h3>Contact</h3>
+                <p>📞 06 83 09 61 07</p>
+                <p>✉️ celiafsopro64@gmail.com</p>
+                <p>📍 Bayonne & domicile & Viso Conférence</p>
+            </div>
+            <div>
+                <h3>Horaires</h3>
+                <p>Lundi : 10h - 20h</p>
+                <p>Mardi : 10h30 - 14h30, 16h30 - 20h</p>
+                <p>Mercredi : 10h - 20h30</p>
+                <p>Jeudi : Fermé</p>
+                <p>Vendredi : Fermé</p>
+                <p>Samedi : 14h - 20h</p>
+                <p>Dimanche : Fermé</p>
+                <p style="font-style: italic;">Sur rendez-vous uniquement</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Célia Fernandes - Sophrologue à Bayonne. Tous droits réservés.</p>
+            <p style="opacity: 0.8;">Confiance • Estime de soi • Bienveillance</p>
+            <p style="opacity: 0.6; font-size: 0.9rem;">Site développé par Buisson Léni</p>
+        </div>
+    </footer>
+
+    <script>
+        // Offer Toggle Function
+        function toggleOffer(element) {
+            const offerItem = element.parentElement;
+            const offerIcon = element.querySelector('.offer-icon');
+            
+            // Close all other offer items
+            document.querySelectorAll('.offer-item').forEach(item => {
+                if (item !== offerItem) {
+                    item.classList.remove('active');
+                    const icon = item.querySelector('.offer-icon');
+                    if (icon) icon.textContent = '+';
+                }
+            });
+            
+            // Toggle current offer item
+            offerItem.classList.toggle('active');
+            
+            if (offerItem.classList.contains('active')) {
+                offerIcon.textContent = '×';
+            } else {
+                offerIcon.textContent = '+';
+            }
+        }
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Apply fade-in animation to elements
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Hamburger animation
+        hamburger.addEventListener('click', () => {
+            const spans = hamburger.querySelectorAll('span');
+            
+            if (hamburger.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'rotate(0) translate(0, 0)';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'rotate(0) translate(0, 0)';
+            }
+        });
+    </script>
+</body>
+</html>
